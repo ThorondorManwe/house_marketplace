@@ -1,9 +1,34 @@
 /* eslint-disable no-unused-vars */
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import { getAuth } from 'firebase/auth';
+import { useNavigate, Link } from 'react-router-dom';
 
 function Profile() {
+  const auth = getAuth();
+
+  const [formData, setFormData] = useState({
+    displayName: auth.currentUser.displayName,
+    email: auth.currentUser.email
+  });
+
+  const { displayName, email } = formData;
+
+  const navigate = useNavigate();
+
+  const onLogout = () => {
+    auth.signOut();
+    navigate('/');
+  }
+
   return (
-    <div>Profile</div>
+    <div className='profile'>
+      <header className='profileHeader'>
+        <p className="pageHeader">My Profile</p>
+        <button type='button' className="logOut" onClick={onLogout}>
+          Logout
+        </button>
+      </header>
+    </div>
   )
 }
 

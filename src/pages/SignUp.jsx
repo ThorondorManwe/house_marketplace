@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
 import { setDoc, doc, serverTimestamp } from 'firebase/firestore';
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { db } from '../firebase.config';
@@ -10,11 +11,11 @@ import eyeImage from "../assets/eye.png";
 function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
-    name: "",
+    displayName: "",
     email: "",
     password: "",
   });
-  const { name, email, password } = formData;
+  const { displayName, email, password } = formData;
 
   const navigate = useNavigate();
 
@@ -36,7 +37,7 @@ function SignUp() {
       const user = userCredential.user;
 
       updateProfile(auth.currentUser, {
-        displayname: name
+        displayName: displayName
       });
 
 
@@ -49,7 +50,7 @@ function SignUp() {
       navigate('/');
 
     } catch (error) {
-      console.log(error);
+      toast.error('Something went wrong with registration');
     }
   }
 
@@ -66,8 +67,8 @@ function SignUp() {
             type="text"
             className="nameInput"
             placeholder="Name"
-            id="name"
-            value={name}
+            id="displayName"
+            value={displayName}
             onChange={onChange}
           />
 
