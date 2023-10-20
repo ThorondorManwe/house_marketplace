@@ -212,6 +212,11 @@ button {
   padding: 1rem;
 }
 
+.eye-image {
+  width: 55px; /* Set the desired width */
+  height: auto; /* Maintain aspect ratio by auto for height */
+}
+
 .forgotPasswordLink {
   cursor: pointer;
   color: #00cc66;
