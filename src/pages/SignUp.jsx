@@ -7,6 +7,7 @@ import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase
 import { db } from '../firebase.config';
 import KeyboardArrowRightIcon from "../assets/svg/keyboardArrowRightIcon";
 import eyeImage from "../assets/eye.png";
+import OAuth from "../components/OAuth";
 
 function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
@@ -50,6 +51,7 @@ function SignUp() {
       navigate('/');
 
     } catch (error) {
+      console.log(error);
       toast.error('Something went wrong with registration');
     }
   }
@@ -109,7 +111,8 @@ function SignUp() {
           </div>
         </form>
 
-        {/* Google OAuth */}
+        <OAuth />
+        
         <Link to='/sign-in' className='registerLink'>
           Sign In Instead
         </Link>

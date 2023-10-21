@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import KeyboardArrowRightIcon from "../assets/svg/keyboardArrowRightIcon";
 //import VisibilityIcon from "../assets/svg/visibilityIcon";
 import eyeImage from "../assets/eye.png";
+import OAuth from "../components/OAuth";
 
 
 function SignIn() {
@@ -95,7 +96,8 @@ function SignIn() {
           </div>
         </form>
 
-        {/* Google OAuth */}
+        <OAuth />
+        
         <Link to='/sign-up' className='registerLink'>
           Sign Up Instead
         </Link>
