@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Link } from 'react-router-dom'
-import DeleteIcon from '../assets/svg/deleteIcon';
+//import DeleteIcon from '../assets/svg/deleteIcon';
+import DeleteIcon from "../assets/svg/deleteIcon.jsx";
 import EditIcon from '../assets/svg/editIcon';
 import bedIcon from '../assets/svg/bedIcon.svg'
 import bathtubIcon from '../assets/svg/bathtubIcon.svg'
@@ -50,11 +51,17 @@ function ListingItem({ listing, id, onEdit, onDelete }) {
       </Link>
 
       {onDelete && (
-        <DeleteIcon
-          className='removeIcon'
-          fill='rgb(231, 76,60)'
-          onClick={() => onDelete(listing.id, listing.name)}
-        />
+        <>
+          <ul>
+            <li className="navbarListItem" onClick={() => onDelete(listing.id, listing.name)}>
+              <DeleteIcon
+                className='removeIcon'
+                fill='rgb(231, 76,60)'
+                
+              />
+            </li>
+          </ul>
+        </>
       )}
 
       {onEdit && <EditIcon className='editIcon' onClick={() => onEdit(id)} />}
