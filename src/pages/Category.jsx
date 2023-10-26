@@ -15,9 +15,9 @@ import Spinner from '../components/Spinner'
 import ListingItem from '../components/ListingItem'
 
 function Category() {
-  const [listings, setListings] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [lastFetchedListing, setLastFetchedListing] = useState(null)
+  const [listings, setListings] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [lastFetchedListing, setLastFetchedListing] = useState(null);
 
   const params = useParams()
 
@@ -38,8 +38,8 @@ function Category() {
         // Execute query
         const querySnap = await getDocs(q)
 
-        const lastVisible = querySnap.docs[querySnap.docs.length - 1]
-        setLastFetchedListing(lastVisible)
+        const lastVisible = querySnap.docs[querySnap.docs.length - 1];
+        setLastFetchedListing(lastVisible);
 
         const listings = []
 
@@ -64,7 +64,7 @@ function Category() {
   const onFetchMoreListings = async () => {
     try {
       // Get reference
-      const listingsRef = collection(db, 'listings')
+      const listingsRef = collection(db, 'listings');
 
       // Create a query
       const q = query(
@@ -90,8 +90,8 @@ function Category() {
         })
       })
 
-      setListings((prevState) => [...prevState, ...listings])
-      setLoading(false)
+      setListings((prevState) => [...prevState, ...listings]);
+      setLoading(false);
     } catch (error) {
       toast.error('Could not fetch listings')
     }

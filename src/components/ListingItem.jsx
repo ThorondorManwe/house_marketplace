@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom'
 //import DeleteIcon from '../assets/svg/deleteIcon';
 import DeleteIcon from "../assets/svg/deleteIcon.jsx";
-import EditIcon from '../assets/svg/editIcon';
+import EditIcon from '../assets/svg/editIcon.jsx';
 import bedIcon from '../assets/svg/bedIcon.svg'
 import bathtubIcon from '../assets/svg/bathtubIcon.svg'
 
@@ -64,7 +64,15 @@ function ListingItem({ listing, id, onEdit, onDelete }) {
         </>
       )}
 
-      {onEdit && <EditIcon className='editIcon' onClick={() => onEdit(id)} />}
+      {onEdit && (
+        <>
+            <ul>
+              <li className="navbarListItem" onClick={() => onEdit(id)}>
+                  <EditIcon className='editIcon'  />
+              </li>
+            </ul>
+        </>
+      )}
     </li>
   )
 }
